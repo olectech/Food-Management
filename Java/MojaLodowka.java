@@ -28,8 +28,10 @@ DatabaseReference databaseProdukty;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_moja_lodowka);
-
-        databaseProdukty = FirebaseDatabase.getInstance().getReference("Produkty");
+        String nazwaBazy;
+        nazwaBazy = getIntent().getStringExtra("us").replace("@", "-").replace(".", "-");
+        Toast.makeText(this, nazwaBazy, Toast.LENGTH_LONG).show();
+        databaseProdukty = FirebaseDatabase.getInstance().getReference(nazwaBazy+"/Produkty");
 
         //editTextDataWaznosci = (EditText)findViewById(R.id.editTextDataWaznosci);
         editTextNazwaProduktu = (EditText)findViewById(R.id.editTextNazwaProduktu);
@@ -56,19 +58,18 @@ DatabaseReference databaseProdukty;
         String data = String.valueOf(rok)+"/"+String.valueOf(miesiac)+"/"+String.valueOf(dzien);
         produktData = data;
         wybranadata = true;
-        System.out.println(data);
+        //System.out.println(data);
     }
 
     public void wprowadzProdukt(){
         String nazwaProduktu = editTextNazwaProduktu.getText().toString().trim();
 
-        if(!TextUtils.isEmpty(nazwaProduktu)){
+        if(!TextUtils.isEmpty(nazwaProduktu)&&wybranadata==true){
         String id = databaseProdukty.push().getKey();
 
         Produkt produkt = new Produkt(id, nazwaProduktu, produktData);
         databaseProdukty.child(id).setValue(produkt);
         Toast.makeText(this, "Dodano produkt!", Toast.LENGTH_LONG).show();
-
 
         }else if(wybranadata==false){
             Toast.makeText(this, "Wybierz datę ważności.", Toast.LENGTH_LONG).show();
