@@ -12,5 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </com.google.android.gms.common.SignInButton>
+    <Button
+        android:id="@+id/logowanie"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Naciśnij ten przycisk jak logowanie nie działa."/>
 
 </LinearLayout>

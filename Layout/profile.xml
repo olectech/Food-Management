@@ -23,10 +23,34 @@
         android:minHeight="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/dodajbtn"
+        android:text="Dodaj produkt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/zawartosctbtn"
+        android:text="Zawartość mojej lodówki"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/listabtn"
+        android:text="Lista zakupów."
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/terminybtn"
+        android:text="Co trzeba zjeść?"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/logoutbtn"
         android:text="Wyloguj"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
 </LinearLayout>
