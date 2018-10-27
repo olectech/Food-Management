@@ -48,10 +48,14 @@ DatabaseReference databaseProdukty;
             }
         });
     }
+
     String produktData; // tymczasowa data
+    boolean wybranadata = false;
+
     public void data(int rok, int miesiac, int dzien){
         String data = String.valueOf(rok)+"/"+String.valueOf(miesiac)+"/"+String.valueOf(dzien);
         produktData = data;
+        wybranadata = true;
         System.out.println(data);
     }
 
@@ -66,8 +70,11 @@ DatabaseReference databaseProdukty;
         Toast.makeText(this, "Dodano produkt!", Toast.LENGTH_LONG).show();
 
 
-        }else{
-            Toast.makeText(this, "Wprowadź nazwę produktu", Toast.LENGTH_LONG).show();
+        }else if(wybranadata==false){
+            Toast.makeText(this, "Wybierz datę ważności.", Toast.LENGTH_LONG).show();
+        }
+        else{
+            Toast.makeText(this, "Wprowadź nazwę produktu.", Toast.LENGTH_LONG).show();
         }
     }
 }
