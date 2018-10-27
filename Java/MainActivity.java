@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -30,11 +31,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FirebaseAuth mAuth;
     String TAG = "Tag";
     private SignInButton googlebtn;
+    private Button logowanie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        logowanie = (Button)findViewById(R.id.logowanie);
+        logowanie.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
         googlebtn = (SignInButton)findViewById(R.id.googlebtn);
@@ -106,9 +110,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        signIn();
-       // Intent intent = new Intent(this, Profile.class);
-        //startActivity(intent);
+        switch (view.getId()){
+            case R.id.googlebtn:
+                signIn();
+                //Intent intent = new Intent(this, Profile.class);
+                //startActivity(intent);
+                break;
+            case R.id.logowanie:
+                Intent intent = new Intent(this, MojaLodowka.class);
+                startActivity(intent);
+        }
+
+
     }
     private void updateUI(FirebaseUser user){
         String username = user.getDisplayName();
