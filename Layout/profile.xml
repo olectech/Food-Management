@@ -40,14 +40,14 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/zawartosctbtn"
-        android:text="Zawartość mojej lodówki"
+        android:id="@+id/listabtn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Lista produktów" />
 
     <Button
-        android:id="@+id/listabtn"
-        android:text="Lista zakupów."
+        android:id="@+id/zawartosctbtn"
+        android:text="Zawartość mojej lodówki"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
