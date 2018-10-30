@@ -87,6 +87,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                 break;
             case R.id.listabtn:
                 Intent lista = new Intent(this, listaZakupow.class); // nowa intencja lista zakupów
+                lista.putExtra("us", useremail);
                 startActivity(lista);
                 Toast.makeText(this,"Lista?", Toast.LENGTH_LONG).show();
                 break;
