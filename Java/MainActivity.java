@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -117,7 +118,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //startActivity(intent);
                 break;
             case R.id.logowanie:
-                Intent intent = new Intent(this, MojaLodowka.class);
+                Toast.makeText(this, "Logowanie.", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(this, zawartoscLodowki.class);
                 startActivity(intent);
         }
 
