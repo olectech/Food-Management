@@ -28,7 +28,7 @@ DatabaseReference databaseProdukty;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_moja_lodowka);
-        String nazwaBazy;
+        String nazwaBazy = "NONAME";
         nazwaBazy = getIntent().getStringExtra("us").replace("@", "-").replace(".", "-");
         Toast.makeText(this, nazwaBazy, Toast.LENGTH_LONG).show();
         databaseProdukty = FirebaseDatabase.getInstance().getReference(nazwaBazy+"/Produkty");
