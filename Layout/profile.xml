@@ -26,6 +26,13 @@
         android:minHeight="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/userid"
+        android:minHeight="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/dodajbtn"
         android:text="Dodaj produkt"
