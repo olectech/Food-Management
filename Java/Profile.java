@@ -21,6 +21,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
 
     String useremail, username, userphoto; // wyswietlanie info o profilu zmienne
     Uri url;
+    TextView userid;
 
     ImageView profilephoto;
 
@@ -61,10 +62,12 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         username = getIntent().getStringExtra("username");
         userphoto = getIntent().getStringExtra("url");
         url = Uri.parse(userphoto);
-        u.setText(username);
-        e.setText(useremail);
+        u.setText("Nazwa użytkownika: "+"\t"+username);
+        e.setText("E-mail: "+"\t"+useremail);
         //System.out.println(url);
         //Picasso.get().load(url).into(profilephoto);
+        userid = (TextView)findViewById(R.id.userid);
+        userid.setText("Nazwa bazy: "+"\t"+useremail.replace("@", "-").replace(".", "-"));
     }
 
     @Override
@@ -78,6 +81,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                 break;
             case R.id.zawartosctbtn:
                 Intent zawartosc = new Intent(this, zawartoscLodowki.class); // nowa intencja wykaz produktów w lodowce
+                zawartosc.putExtra("us", useremail);
                 startActivity(zawartosc);
                 Toast.makeText(this,"Zawartosc?", Toast.LENGTH_LONG).show();
                 break;

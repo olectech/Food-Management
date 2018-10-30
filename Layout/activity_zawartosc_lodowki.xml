@@ -5,4 +5,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <Button
+        android:id="@+id/zawartoscwyswietlbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Co mam w lodówce?"/>
+
+    <GridView
+
+        android:id="@+id/gridview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="4" />
+
 </LinearLayout>
