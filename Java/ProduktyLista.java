@@ -37,4 +37,4 @@ public class ProduktyLista extends ArrayAdapter<Produkt> {
 
         return listViewItem;
     }
-}
+    }
