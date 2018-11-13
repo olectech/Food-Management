@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,35 +8,83 @@
     android:orientation="vertical"
     tools:context="pl.oltek.solek.foodmanagement.MojaLodowka">
 
-    <TextView
-        android:textSize="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nazwa produktu:"/>
-
-    <EditText
-        android:id="@+id/editTextNazwaProduktu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxLength="20"/>
-
-    <TextView
-        android:textSize="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Data ważności:"/>
-
-
-    <CalendarView
-        android:id="@+id/kalendarz"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <Button
         android:id="@+id/buttonDodajProdukt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Dodaj produkt!"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nazwa produktu:"
+                android:textColor="@android:color/black"
+                android:textSize="25dp" />
+
+            <EditText
+                android:id="@+id/editTextNazwaProduktu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="20" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:text="Ilość:"
+                android:textSize="25dp" />
+
+            <EditText
+                android:id="@+id/editTextIlosc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="20" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:text="Ilość min.:"
+                android:textSize="25dp" />
+
+            <EditText
+                android:id="@+id/editTextIloscMin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="20" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:text="Kategoria:"
+                android:textSize="25dp" />
+
+            <Spinner
+                android:id="@+id/SpinnerKategorie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Data ważności:"
+                android:textColor="@android:color/black"
+                android:textSize="25dp" />
+
+            <CalendarView
+                android:id="@+id/kalendarz"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
