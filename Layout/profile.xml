@@ -43,7 +43,7 @@
         android:id="@+id/listabtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lista produktów" />
+        android:text="Lista produktów lodówka" />
 
     <Button
         android:id="@+id/zawartosctbtn"
