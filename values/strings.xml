@@ -22,13 +22,9 @@
         <item>Przekąski</item>
     </array>
     <array name="Sortowanie">
-        <item>Data ważności</item>
-        <item>Ilość (poniżej minimum)</item>
-        <item>Mięso</item>
-        <item>Nabiał</item>
-        <item>Napoje</item>
-        <item>Alkohol</item>
-        <item>Fast Food</item>
-        <item>Przekąski</item>
+        <item>produktNazwa</item>
+        <item>produktData</item>
+        <item>produktKategoria</item>
+        <item>produktIlosc</item>
     </array>
 </resources>
