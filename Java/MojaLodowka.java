@@ -26,7 +26,9 @@ public class MojaLodowka extends AppCompatActivity {
 Button buttonDodajProdukt;
 CalendarView kalendarz;
 Spinner spinner;
+Spinner spinnerJednostka;
 ArrayAdapter<CharSequence> adapter;
+    ArrayAdapter<CharSequence> adapter2;
 DatabaseReference databaseProdukty;
     @Override
 
@@ -38,6 +40,11 @@ DatabaseReference databaseProdukty;
         adapter = ArrayAdapter.createFromResource(this, R.array.Kategorie, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+        spinnerJednostka = (Spinner)findViewById(R.id.spinnerJednostka);
+        adapter2 = ArrayAdapter.createFromResource(this, R.array.Jednostki, android.R.layout.simple_spinner_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerJednostka.setAdapter(adapter2);
 
         String nazwaBazy = "NONAME";
         nazwaBazy = getIntent().getStringExtra("us").replace("@", "-").replace(".", "-");
@@ -69,7 +76,7 @@ DatabaseReference databaseProdukty;
     boolean wybranadata = false;
 
     public void data(int rok, int miesiac, int dzien){
-        String data = String.valueOf(rok)+"/"+String.valueOf(miesiac)+"/"+String.valueOf(dzien);
+        String data = String.valueOf(rok)+"/"+String.valueOf(miesiac+1)+"/"+String.valueOf(dzien);
         produktData = data;
         wybranadata = true;
         //System.out.println(data);
@@ -80,11 +87,12 @@ DatabaseReference databaseProdukty;
         String produktIlosc = editTextIloscProduktu.getText().toString().trim();
         String produktKategoria = spinner.getSelectedItem().toString();
         String produktIloscMin = editTextIloscMinProduktu.getText().toString().trim();
+        String produktJednostka = spinnerJednostka.getSelectedItem().toString();
 
         if(!TextUtils.isEmpty(nazwaProduktu)&&wybranadata==true){
         String id = databaseProdukty.push().getKey();
 
-        Produkt produkt = new Produkt(id, nazwaProduktu, produktData, produktIlosc, produktKategoria, produktIloscMin);
+        Produkt produkt = new Produkt(id, nazwaProduktu, produktData, produktIlosc, produktKategoria, produktIloscMin, produktJednostka);
         databaseProdukty.child(id).setValue(produkt);
         Toast.makeText(this, "Dodano produkt!", Toast.LENGTH_LONG).show();
 
