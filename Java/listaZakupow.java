@@ -38,7 +38,7 @@ public class listaZakupow extends AppCompatActivity implements AdapterView.OnIte
         produktList = new ArrayList<>();
 
         spinnerSortowanie = (Spinner)findViewById(R.id.spinnerSortowanie);
-        adapter = ArrayAdapter.createFromResource(this, R.array.Sortowanie, android.R.layout.simple_spinner_item);
+        adapter = ArrayAdapter.createFromResource(this, R.array.KategorieSortowanie, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerSortowanie.setAdapter(adapter);
         spinnerSortowanie.setOnItemSelectedListener(this);
@@ -60,24 +60,46 @@ public class listaZakupow extends AppCompatActivity implements AdapterView.OnIte
         String text = adapterView.getItemAtPosition(i).toString();
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
 
-        databaseProdukty.orderByChild(text).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                produktList.clear();
-                for(DataSnapshot produkty_snaphot : dataSnapshot.getChildren()){
-                    Produkt produkt = produkty_snaphot.getValue(Produkt.class);
+        if(text.equals("Wszystko")){
+            databaseProdukty.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    produktList.clear();
+                    for(DataSnapshot produkty_snaphot : dataSnapshot.getChildren()){
+                        Produkt produkt = produkty_snaphot.getValue(Produkt.class);
 
-                    produktList.add(produkt);
+                        produktList.add(produkt);
 
+                    }
+                    ProduktyLista adapter = new ProduktyLista(listaZakupow.this, produktList);
+                    listViewProdukty.setAdapter(adapter);
                 }
-                ProduktyLista adapter = new ProduktyLista(listaZakupow.this, produktList);
-                listViewProdukty.setAdapter(adapter);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
+        }
+        else{
+            databaseProdukty.orderByChild("produktKategoria").equalTo(text).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    produktList.clear();
+                    for(DataSnapshot produkty_snaphot : dataSnapshot.getChildren()){
+                        Produkt produkt = produkty_snaphot.getValue(Produkt.class);
+
+                        produktList.add(produkt);
+
+                    }
+                    ProduktyLista adapter = new ProduktyLista(listaZakupow.this, produktList);
+                    listViewProdukty.setAdapter(adapter);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
+        }
     }
 
     @Override
