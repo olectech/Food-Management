@@ -55,6 +55,11 @@
                 android:text="Ilość min.:"
                 android:textSize="25dp" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"></LinearLayout>
+
             <EditText
                 android:id="@+id/editTextIloscMin"
                 android:layout_width="match_parent"
