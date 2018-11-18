@@ -21,10 +21,27 @@
         <item>Fast Food</item>
         <item>Przekąski</item>
     </array>
+    <array name="KategorieSortowanie">
+        <item>Wszystko</item>
+        <item>Mięso</item>
+        <item>Nabiał</item>
+        <item>Napoje</item>
+        <item>Alkohol</item>
+        <item>Fast Food</item>
+        <item>Przekąski</item>
+    </array>
     <array name="Sortowanie">
         <item>produktNazwa</item>
         <item>produktData</item>
         <item>produktKategoria</item>
         <item>produktIlosc</item>
+    </array>
+    <array name="Jednostki">
+        <item>szt</item>
+        <item>ml</item>
+        <item>l</item>
+        <item>g</item>
+        <item>dg</item>
+        <item>kg</item>
     </array>
 </resources>
