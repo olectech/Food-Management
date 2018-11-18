@@ -19,7 +19,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class MojaLodowka extends AppCompatActivity {
-EditText editTextNazwaProduktu;
+    EditText editTextIloscProduktu;
+    EditText editTextIloscMinProduktu;
+    EditText editTextNazwaProduktu;
 //EditText editTextDataWaznosci;
 Button buttonDodajProdukt;
 CalendarView kalendarz;
@@ -44,6 +46,9 @@ DatabaseReference databaseProdukty;
 
         //editTextDataWaznosci = (EditText)findViewById(R.id.editTextDataWaznosci);
         editTextNazwaProduktu = (EditText)findViewById(R.id.editTextNazwaProduktu);
+        editTextIloscMinProduktu = (EditText)findViewById(R.id.editTextIloscMin);
+        editTextIloscProduktu = (EditText)findViewById(R.id.editTextIlosc);
+
         buttonDodajProdukt = (Button)findViewById(R.id.buttonDodajProdukt);
         kalendarz = (CalendarView)findViewById(R.id.kalendarz);
         kalendarz.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -72,9 +77,9 @@ DatabaseReference databaseProdukty;
 
     public void wprowadzProdukt(){
         String nazwaProduktu = editTextNazwaProduktu.getText().toString().trim();
-        String produktIlosc = "0";
-        String produktKategoria = "0";
-        String produktIloscMin = "0";
+        String produktIlosc = editTextIloscProduktu.getText().toString().trim();
+        String produktKategoria = spinner.getSelectedItem().toString();
+        String produktIloscMin = editTextIloscMinProduktu.getText().toString().trim();
 
         if(!TextUtils.isEmpty(nazwaProduktu)&&wybranadata==true){
         String id = databaseProdukty.push().getKey();
