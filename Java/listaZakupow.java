@@ -53,7 +53,14 @@ public class listaZakupow extends AppCompatActivity implements AdapterView.OnIte
     protected void onStart() {
         super.onStart();
 
-        databaseProdukty.addValueEventListener(new ValueEventListener() {
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        String text = adapterView.getItemAtPosition(i).toString();
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+
+        databaseProdukty.orderByChild(text).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 produktList.clear();
@@ -71,13 +78,6 @@ public class listaZakupow extends AppCompatActivity implements AdapterView.OnIte
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        String text = adapterView.getItemAtPosition(i).toString();
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
     @Override
