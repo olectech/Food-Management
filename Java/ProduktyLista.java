@@ -32,6 +32,7 @@ public class ProduktyLista extends ArrayAdapter<Produkt> {
         TextView textViewIlosc = (TextView)listViewItem.findViewById(R.id.iloscProdukt);
         TextView textViewIloscMin = (TextView)listViewItem.findViewById(R.id.iloscMinProdukt);
         TextView textViewKategoria = (TextView)listViewItem.findViewById(R.id.kategoriaProdukt);
+        TextView textViewJednostka = (TextView)listViewItem.findViewById(R.id.iloscJednostka);
 
 
         Produkt produkt = produktList.get(position);
@@ -41,6 +42,7 @@ public class ProduktyLista extends ArrayAdapter<Produkt> {
         textViewIlosc.setText(produkt.produktIlosc);
         textViewIloscMin.setText(produkt.produktIloscMin);
         textViewKategoria.setText(produkt.produktKategoria);
+        textViewJednostka.setText(" "+produkt.produktJednostka);
 
         return listViewItem;
     }
