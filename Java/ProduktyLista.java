@@ -29,11 +29,18 @@ public class ProduktyLista extends ArrayAdapter<Produkt> {
 
         TextView textViewNazwa = (TextView)listViewItem.findViewById(R.id.nazwaProdukt);
         TextView textViewData = (TextView)listViewItem.findViewById(R.id.dataProdukt);
+        TextView textViewIlosc = (TextView)listViewItem.findViewById(R.id.iloscProdukt);
+        TextView textViewIloscMin = (TextView)listViewItem.findViewById(R.id.iloscMinProdukt);
+        TextView textViewKategoria = (TextView)listViewItem.findViewById(R.id.kategoriaProdukt);
+
 
         Produkt produkt = produktList.get(position);
 
-        textViewData.setText("Data ważności: "+produkt.produktData);
+        textViewData.setText(produkt.produktData);
         textViewNazwa.setText(produkt.produktNazwa);
+        textViewIlosc.setText(produkt.produktIlosc);
+        textViewIloscMin.setText(produkt.produktIloscMin);
+        textViewKategoria.setText(produkt.produktKategoria);
 
         return listViewItem;
     }
