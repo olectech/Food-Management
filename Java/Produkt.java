@@ -9,15 +9,17 @@ public class Produkt {
     String produktIlosc;
     String produktKategoria;
     String produktIloscMin;
+    String produktJednostka;
     //DateFormat produktData;
 
-    public Produkt(String produktId, String produktNazwa, String produktData, String produkIlosc, String produktKategoria, String produktIloscMin) {
+    public Produkt(String produktId, String produktNazwa, String produktData, String produkIlosc, String produktKategoria, String produktIloscMin, String produktJednostka) {
         this.produktId = produktId;
         this.produktNazwa = produktNazwa;
         this.produktData = produktData;
         this.produktIlosc = produkIlosc;
         this.produktKategoria = produktKategoria;
         this.produktIloscMin = produktIloscMin;
+        this.produktJednostka = produktJednostka;
     }
 
     public String getProduktId() {
@@ -42,6 +44,10 @@ public class Produkt {
 
     public String getProduktIloscMin() {
         return produktIloscMin;
+    }
+
+    public String getProduktJednostka() {
+        return produktJednostka;
     }
 
     public Produkt(){
