@@ -59,7 +59,12 @@ public class listaZakupow extends AppCompatActivity implements AdapterView.OnIte
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         String text = adapterView.getItemAtPosition(i).toString();
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
-
+        listViewProdukty.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                
+            }
+        });
         if(text.equals("Wszystko")){
             databaseProdukty.addValueEventListener(new ValueEventListener() {
                 @Override
