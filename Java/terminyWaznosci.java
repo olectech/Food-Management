@@ -51,7 +51,7 @@ public class terminyWaznosci extends AppCompatActivity implements AdapterView.On
 
         String nazwaBazy = "NONAME";
         nazwaBazy = getIntent().getStringExtra("us").replace("@", "-").replace(".", "-");
-        Toast.makeText(this, nazwaBazy, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, nazwaBazy, Toast.LENGTH_LONG).show();
         databaseProdukty = FirebaseDatabase.getInstance().getReference(nazwaBazy+"/Produkty");
     }
 
@@ -72,13 +72,14 @@ public class terminyWaznosci extends AppCompatActivity implements AdapterView.On
                         Produkt produkt = produkty_snaphot.getValue(Produkt.class);
 
                         String data = produkt.produktData;
-                        String rok = data.substring(0, 4);
-                        String miesiac = data.substring(5, 7);
-                        String dzien = data.substring(8);
+                        String[] daty = data.split("/");
+                        //String rok = data.substring(0, 4);
+                        //String miesiac = data.substring(5, 7);
+                        //String dzien = data.substring(8);
 
-                        int a = Integer.parseInt(rok);
-                        int b = Integer.parseInt(miesiac);
-                        int c = Integer.parseInt(dzien);
+                        int a = Integer.parseInt(daty[0]);
+                        int b = Integer.parseInt(daty[1]);
+                        int c = Integer.parseInt(daty[2]);
 
                         Calendar thatDay = Calendar.getInstance();
                         thatDay.set(Calendar.DAY_OF_MONTH, c);
@@ -119,13 +120,14 @@ public class terminyWaznosci extends AppCompatActivity implements AdapterView.On
                         Produkt produkt = produkty_snaphot.getValue(Produkt.class);
 
                         String data = produkt.produktData;
-                        String rok = data.substring(0, 4);
-                        String miesiac = data.substring(5, 7);
-                        String dzien = data.substring(8);
+                        String[] daty = data.split("/");
+                        //String rok = data.substring(0, 4);
+                        //String miesiac = data.substring(5, 7);
+                        //String dzien = data.substring(8);
 
-                        int a = Integer.parseInt(rok);
-                        int b = Integer.parseInt(miesiac);
-                        int c = Integer.parseInt(dzien);
+                        int a = Integer.parseInt(daty[0]);
+                        int b = Integer.parseInt(daty[1]);
+                        int c = Integer.parseInt(daty[2]);
 
                         Calendar thatDay = Calendar.getInstance();
                         thatDay.set(Calendar.DAY_OF_MONTH, c);
