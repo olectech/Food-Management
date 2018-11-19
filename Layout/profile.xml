@@ -49,18 +49,19 @@
         android:id="@+id/zawartosctbtn"
         android:text="Zawartość mojej lodówki"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:visibility="invisible"/>
 
     <Button
         android:id="@+id/terminybtn"
-        android:text="Co trzeba zjeść?"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Co trzeba zjeść?" />
 
     <Button
         android:id="@+id/logoutbtn"
-        android:text="Wyloguj"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:text="Wyloguj" />
 
 </LinearLayout>
