@@ -89,10 +89,10 @@ public class terminyWaznosci extends AppCompatActivity {
                         produkt.produktData = data+" Przeterminowane "+wynik+" dni.";
                     }
                     else if(wynik==0){
-                        produkt.produktData = data+" (Dzisiaj mija termin!)";
+                        produkt.produktData = data+" Dzisiaj mija termin!";
                     }
                     else{
-                        produkt.produktData = data+" (Pozostało "+wynik+" dni.)";
+                        produkt.produktData = data+" Pozostało "+wynik+" dni.";
                     }
                     produktListTerminy.add(produkt);
 
