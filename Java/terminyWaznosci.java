@@ -25,12 +25,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class terminyWaznosci extends AppCompatActivity {
+public class terminyWaznosci extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     ListView listViewProduktyTerminy;
     List<Produkt> produktListTerminy;
-    //Spinner spinnerSortowanieTerminy;
-    //ArrayAdapter<CharSequence> adapterTerminy;
+    Spinner spinnerSortowanieTerminy;
+    ArrayAdapter<CharSequence> adapterTerminy;
 
     DatabaseReference databaseProdukty;
 
@@ -43,11 +43,11 @@ public class terminyWaznosci extends AppCompatActivity {
         listViewProduktyTerminy = (ListView)findViewById(R.id.listViewProduktyTerminy);
         produktListTerminy = new ArrayList<>();
 
-        //spinnerSortowanieTerminy = (Spinner)findViewById(R.id.spinnerSortowanieTerminy);
-        //adapterTerminy = ArrayAdapter.createFromResource(this, R.array.KategorieSortowanie, android.R.layout.simple_spinner_item);
-        //adapterTerminy.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //spinnerSortowanieTerminy.setAdapter(adapterTerminy);
-        //spinnerSortowanieTerminy.setOnItemSelectedListener(this);
+        spinnerSortowanieTerminy = (Spinner)findViewById(R.id.spinnerSortowanieTerminy);
+        adapterTerminy = ArrayAdapter.createFromResource(this, R.array.KategorieSortowanie, android.R.layout.simple_spinner_item);
+        adapterTerminy.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerSortowanieTerminy.setAdapter(adapterTerminy);
+        spinnerSortowanieTerminy.setOnItemSelectedListener(this);
 
         String nazwaBazy = "NONAME";
         nazwaBazy = getIntent().getStringExtra("us").replace("@", "-").replace(".", "-");
@@ -58,53 +58,109 @@ public class terminyWaznosci extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        databaseProdukty.orderByChild("produktData").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                produktListTerminy.clear();
-                for(DataSnapshot produkty_snaphot : dataSnapshot.getChildren()){
-                    Produkt produkt = produkty_snaphot.getValue(Produkt.class);
+    }
 
-                    String data = produkt.produktData;
-                    String rok = data.substring(0,4);
-                    String miesiac = data.substring(5,7);
-                    String dzien = data.substring(8);
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        String text = adapterView.getItemAtPosition(i).toString();
+        if(text.equals("Wszystko")) {
+            databaseProdukty.orderByChild("produktData").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    produktListTerminy.clear();
+                    for (DataSnapshot produkty_snaphot : dataSnapshot.getChildren()) {
+                        Produkt produkt = produkty_snaphot.getValue(Produkt.class);
 
-                    int a = Integer.parseInt(rok);
-                    int b = Integer.parseInt(miesiac);
-                    int c = Integer.parseInt(dzien);
+                        String data = produkt.produktData;
+                        String rok = data.substring(0, 4);
+                        String miesiac = data.substring(5, 7);
+                        String dzien = data.substring(8);
 
-                    Calendar thatDay = Calendar.getInstance();
-                    thatDay.set(Calendar.DAY_OF_MONTH, c);
-                    thatDay.set(Calendar.MONTH,b-1); // 0-11 so 1 less
-                    thatDay.set(Calendar.YEAR, a);
+                        int a = Integer.parseInt(rok);
+                        int b = Integer.parseInt(miesiac);
+                        int c = Integer.parseInt(dzien);
 
-                    Calendar today = Calendar.getInstance();
+                        Calendar thatDay = Calendar.getInstance();
+                        thatDay.set(Calendar.DAY_OF_MONTH, c);
+                        thatDay.set(Calendar.MONTH, b - 1); // 0-11 so 1 less
+                        thatDay.set(Calendar.YEAR, a);
 
-                    long diff = thatDay.getTimeInMillis() - today.getTimeInMillis(); //result in millis
+                        Calendar today = Calendar.getInstance();
 
-                    long days = diff / (24 * 60 * 60 * 1000);
-                    int wynik = (int)days;
-                    if(wynik<0){
-                        produkt.produktData = data+" Przeterminowane "+wynik+" dni.";
+                        long diff = thatDay.getTimeInMillis() - today.getTimeInMillis(); //result in millis
+
+                        long days = diff / (24 * 60 * 60 * 1000);
+                        int wynik = (int) days;
+                        if (wynik < 0) {
+                            produkt.produktData = data + " Przeterminowane " + wynik + " dni.";
+                        } else if (wynik == 0) {
+                            produkt.produktData = data + " Dzisiaj mija termin!";
+                        } else {
+                            produkt.produktData = data + " Pozostało " + wynik + " dni.";
+                        }
+                        produktListTerminy.add(produkt);
+
                     }
-                    else if(wynik==0){
-                        produkt.produktData = data+" Dzisiaj mija termin!";
-                    }
-                    else{
-                        produkt.produktData = data+" Pozostało "+wynik+" dni.";
-                    }
-                    produktListTerminy.add(produkt);
-
+                    ProduktyLista adapter = new ProduktyLista(terminyWaznosci.this, produktListTerminy);
+                    listViewProduktyTerminy.setAdapter(adapter);
                 }
-                ProduktyLista adapter = new ProduktyLista(terminyWaznosci.this, produktListTerminy);
-                listViewProduktyTerminy.setAdapter(adapter);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
+        }
+        else{
+            databaseProdukty.orderByChild("produktKategoria").equalTo(text).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    produktListTerminy.clear();
+                    for (DataSnapshot produkty_snaphot : dataSnapshot.getChildren()) {
+                        Produkt produkt = produkty_snaphot.getValue(Produkt.class);
+
+                        String data = produkt.produktData;
+                        String rok = data.substring(0, 4);
+                        String miesiac = data.substring(5, 7);
+                        String dzien = data.substring(8);
+
+                        int a = Integer.parseInt(rok);
+                        int b = Integer.parseInt(miesiac);
+                        int c = Integer.parseInt(dzien);
+
+                        Calendar thatDay = Calendar.getInstance();
+                        thatDay.set(Calendar.DAY_OF_MONTH, c);
+                        thatDay.set(Calendar.MONTH, b - 1); // 0-11 so 1 less
+                        thatDay.set(Calendar.YEAR, a);
+
+                        Calendar today = Calendar.getInstance();
+
+                        long diff = thatDay.getTimeInMillis() - today.getTimeInMillis(); //result in millis
+
+                        long days = diff / (24 * 60 * 60 * 1000);
+                        int wynik = (int) days;
+                        if (wynik < 0) {
+                            produkt.produktData = data + " Przeterminowane " + wynik + " dni.";
+                        } else if (wynik == 0) {
+                            produkt.produktData = data + " Dzisiaj mija termin!";
+                        } else {
+                            produkt.produktData = data + " Pozostało " + wynik + " dni.";
+                        }
+                        produktListTerminy.add(produkt);
+
+                    }
+                    ProduktyLista adapter = new ProduktyLista(terminyWaznosci.this, produktListTerminy);
+                    listViewProduktyTerminy.setAdapter(adapter);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
 }
