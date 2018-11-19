@@ -62,7 +62,8 @@ public class listaZakupow extends AppCompatActivity implements AdapterView.OnIte
         listViewProdukty.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                
+                String text = adapterView.getItemAtPosition(i).toString();
+                System.out.println(text);
             }
         });
         if(text.equals("Wszystko")){
