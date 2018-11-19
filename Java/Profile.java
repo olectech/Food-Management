@@ -93,6 +93,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                 break;
             case R.id.terminybtn:
                 Intent terminy = new Intent(this, terminyWaznosci.class); // nowa intencja terminy wazności
+                terminy.putExtra("us", useremail);
                 startActivity(terminy);
                 Toast.makeText(this,"Terminy?", Toast.LENGTH_LONG).show();
                 break;
