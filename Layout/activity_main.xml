@@ -11,19 +11,19 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/lodowka"/>
+        android:src="@drawable/lodowka"
+        android:layout_weight="0.7"/>
+    <Button
+        android:id="@+id/logowanie"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:text="Naciśnij ten przycisk jak logowanie nie działa." />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/googlebtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </com.google.android.gms.common.SignInButton>
-
-    <Button
-        android:id="@+id/logowanie"
-        android:visibility="invisible"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Naciśnij ten przycisk jak logowanie nie działa." />
 
 </LinearLayout>
