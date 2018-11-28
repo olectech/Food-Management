@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //startActivity(intent);
                 break;
             case R.id.logowanie:
-                Toast.makeText(this, "Logowanie.", Toast.LENGTH_LONG).show();
+                //Toast.makeText(this, "Logowanie.", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(this, zawartoscLodowki.class);
                 startActivity(intent);
         }

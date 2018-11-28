@@ -77,25 +77,25 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                 Intent dodaj = new Intent(this, MojaLodowka.class); // nowa intencja dodawanie produktów do bazy
                 dodaj.putExtra("us", useremail);
                 startActivity(dodaj);
-                Toast.makeText(this,"Dodaj?", Toast.LENGTH_LONG).show();
+                //Toast.makeText(this,"Dodaj?", Toast.LENGTH_LONG).show();
                 break;
             case R.id.zawartosctbtn:
                 Intent zawartosc = new Intent(this, zawartoscLodowki.class); // nowa intencja wykaz produktów w lodowce
                 zawartosc.putExtra("us", useremail);
                 startActivity(zawartosc);
-                Toast.makeText(this,"Zawartosc?", Toast.LENGTH_LONG).show();
+                //Toast.makeText(this,"Zawartosc?", Toast.LENGTH_LONG).show();
                 break;
             case R.id.listabtn:
                 Intent lista = new Intent(this, listaZakupow.class); // nowa intencja lista zakupów
                 lista.putExtra("us", useremail);
                 startActivity(lista);
-                Toast.makeText(this,"Lista?", Toast.LENGTH_LONG).show();
+                //Toast.makeText(this,"Lista?", Toast.LENGTH_LONG).show();
                 break;
             case R.id.terminybtn:
                 Intent terminy = new Intent(this, terminyWaznosci.class); // nowa intencja terminy wazności
                 terminy.putExtra("us", useremail);
                 startActivity(terminy);
-                Toast.makeText(this,"Terminy?", Toast.LENGTH_LONG).show();
+                //Toast.makeText(this,"Terminy?", Toast.LENGTH_LONG).show();
                 break;
             case R.id.logoutbtn: // wylogowanie z aplikacji
                 mAuth.signOut();

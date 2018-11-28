@@ -48,7 +48,7 @@ DatabaseReference databaseProdukty;
 
         String nazwaBazy = "NONAME";
         nazwaBazy = getIntent().getStringExtra("us").replace("@", "-").replace(".", "-");
-        Toast.makeText(this, nazwaBazy, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, nazwaBazy, Toast.LENGTH_LONG).show();
         databaseProdukty = FirebaseDatabase.getInstance().getReference(nazwaBazy+"/Produkty");
 
         //editTextDataWaznosci = (EditText)findViewById(R.id.editTextDataWaznosci);
