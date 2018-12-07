@@ -3,7 +3,6 @@ package pl.oltek.solek.foodmanagement;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -113,11 +112,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()){
             case R.id.googlebtn:
                 signIn();
-                //Intent intent = new Intent(this, Profile.class);
+                //Intent intent = new Intent(this, GlownyEkran.class);
                 //startActivity(intent);
                 break;
             case R.id.logowanie:
-                Intent intent = new Intent(this, MojaLodowka.class);
+                //Toast.makeText(this, "Logowanie.", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(this, nowaListaZakupow.class);
                 startActivity(intent);
         }
 
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String useremail = user.getEmail();
         Uri url = user.getPhotoUrl();
 
-        Intent intent = new Intent(this, Profile.class);
+        Intent intent = new Intent(this, GlownyEkran.class);
         intent.putExtra("username", username);
         intent.putExtra("useremail", useremail);
         intent.putExtra("url", String.valueOf(url));

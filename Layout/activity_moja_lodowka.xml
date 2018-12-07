@@ -1,34 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MojaLodowka">
-    <TextView
-        android:textSize="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nazwa produktu:"/>
-
-    <EditText
-        android:id="@+id/editTextNazwaProduktu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxLength="20"/>
-
-    <TextView
-        android:textSize="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Data ważności:"/>
-
-
-    <CalendarView
-        android:id="@+id/kalendarz"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    tools:context="pl.oltek.solek.foodmanagement.MojaLodowka">
 
     <Button
         android:id="@+id/buttonDodajProdukt"
@@ -36,5 +14,116 @@
         android:layout_height="wrap_content"
         android:text="Dodaj produkt!"/>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nazwa:"
+        android:minWidth="115dp"
+        android:textColor="@android:color/black"
+        android:textSize="25dp" />
+
+    <EditText
+        android:id="@+id/editTextNazwaProduktu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLength="20" />
+
+</LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:minWidth="115dp"
+                    android:text="Ilość:"
+                    android:textSize="25dp" />
+
+                <EditText
+                    android:id="@+id/editTextIlosc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="150dp"
+                    android:maxLength="20" />
+
+                <Spinner
+                    android:id="@+id/spinnerJednostka"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAlignment="center">
+
+                </Spinner>
+
+            </LinearLayout>
+            <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:text="Ilość min.:"
+        android:minWidth="115dp"
+        android:textSize="25dp" />
+
+    <EditText
+        android:id="@+id/editTextIloscMin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLength="20" />
+
+</LinearLayout>
+            <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:text="Kategoria:"
+        android:minWidth="115dp"
+        android:textSize="25dp" />
+
+    <Spinner
+        android:id="@+id/SpinnerKategorie"
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+        android:layout_height="30dp"></Spinner>
+
+</LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Data ważności:"
+                android:textColor="@android:color/black"
+                android:textSize="25dp" />
+
+            <CalendarView
+                android:id="@+id/kalendarz"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
