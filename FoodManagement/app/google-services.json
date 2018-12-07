@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1033852664168",
+    "firebase_url": "https://foodmanagement-30c22.firebaseio.com",
+    "project_id": "foodmanagement-30c22",
+    "storage_bucket": "foodmanagement-30c22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1033852664168:android:65b91b90b65fae54",
+        "android_client_info": {
+          "package_name": "pl.oltek.solek.foodmanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1033852664168-77l647uc1ecbl7olvhj7h0p52nfa7hnl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pl.oltek.solek.foodmanagement",
+            "certificate_hash": "ece8766479c3e86a1b3aacddb6144270d9a6af7a"
+          }
+        },
+        {
+          "client_id": "1033852664168-9gs9ic0ds1a2atqffpnhd0qagrfvfbfo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOaHsf8qEODO-IA1bz_oYM4jpN5v6jtRg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1033852664168-9gs9ic0ds1a2atqffpnhd0qagrfvfbfo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
